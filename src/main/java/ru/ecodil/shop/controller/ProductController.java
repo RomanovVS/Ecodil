@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/rest-api/")
+@RequestMapping("/rest-api/products/")
 public class ProductController {
     private final ProductService productService;
 
@@ -45,13 +45,4 @@ public class ProductController {
         productService.deleteProduct(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-    // Метод для авторизации и аутентификации
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password) {
-        // Здесь можно добавить логику для проверки пользовательских данных и генерации токена авторизации
-        // В данном примере просто возвращаем успешное сообщение
-        return new ResponseEntity<>("Login successful", HttpStatus.OK);
-    }
-
 }
