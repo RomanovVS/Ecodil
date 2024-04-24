@@ -10,16 +10,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
-
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
-    @SequenceGenerator(name = "product_seq", sequenceName = "PRODUCT_ID", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PRODUCT_ID")
     Long id;
 
+    @Column(name = "PRODUCT_NAME")
     String productName;
+    @Column(name = "PRICE")
     Double price;
+    @Column(name = "DESCRIPTION")
     String description;
+    @Column(name = "COUNTRY_OF_ORIGIN")
     String countryOfOrigin;
+    @Column(name = "CATEGORY")
     String category;
+    @Column(name = "IS_SHARED")
+    Boolean isShared;
 }

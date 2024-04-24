@@ -28,6 +28,12 @@ public class ProductController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/category/{category}")
+    public ResponseEntity<List<Product>> getAllProductsByCategory(@PathVariable("category") String category) {
+        List<Product> products = productService.getProductsByCategory(category);
+        return !products.isEmpty() ? new ResponseEntity<>(products, HttpStatus.OK) : new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
+
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         Product createdProduct = productService.createProduct(product);
