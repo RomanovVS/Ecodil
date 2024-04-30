@@ -9,22 +9,32 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "PRODUCT")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
+    @SequenceGenerator(name = "product_seq", sequenceName = "product_seq", allocationSize = 1)
     @Column(name = "PRODUCT_ID")
-    Long id;
+    private Long id;
 
     @Column(name = "PRODUCT_NAME")
-    String productName;
+    private String productName;
+
     @Column(name = "PRICE")
-    Double price;
+    private Double price;
+
     @Column(name = "DESCRIPTION")
-    String description;
+    private String description;
+
     @Column(name = "COUNTRY_OF_ORIGIN")
-    String countryOfOrigin;
+    private String countryOfOrigin;
+
     @Column(name = "CATEGORY")
-    String category;
+    private String category;
+
     @Column(name = "IS_SHARED")
-    Boolean isShared;
+    private Boolean isShared;
+
+    @Column(name = "PRODUCT_IMAGE")
+    private byte[] imageJPEG;
 }

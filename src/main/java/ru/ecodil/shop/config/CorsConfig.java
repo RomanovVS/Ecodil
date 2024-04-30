@@ -11,7 +11,6 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("*") // Разрешаем запросы только с localhost:8080
-                .allowedMethods("GET", "POST") // Разрешаем только GET и POST запросы
-                .allowedHeaders("Content-Type"); // Разрешаем только заголовок Content-Type
+                .allowedMethods("GET", "POST", "PUT", "DELETE"); // Разрешаем только GET и POST запросы
     }
 }

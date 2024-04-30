@@ -1,12 +1,16 @@
 package ru.ecodil.shop.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.ecodil.shop.dao.model.Product;
 import ru.ecodil.shop.service.ProductService;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -14,6 +18,8 @@ import java.util.List;
 @RequestMapping("/rest-api/products/")
 public class ProductController {
     private final ProductService productService;
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
+
 
     @GetMapping
     public ResponseEntity<List<Product>> getAllProducts() {
@@ -50,6 +56,5 @@ public class ProductController {
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-
     }
 }
